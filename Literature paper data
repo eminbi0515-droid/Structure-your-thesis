@@ -1,0 +1,49 @@
+LiteratureReview_Project/
+├─ 0_search_strategy/              # 검색 전략, PRISMA, 키워드
+│   ├─ search_strings.docx
+│   └─ prisma_flowchart.png
+│
+├─ 1_raw_papers_pdf/               # ★ 원본 논문 PDF
+│   ├─ included/                   # 포함된 논문
+│   │   ├─ S01_....pdf
+│   │   ├─ S02_....pdf
+│   │   └─ ...
+│   └─ excluded/                   # 제외된 논문 (이유 기록용)
+│
+├─ 2_clean_text/                   # ★ 1단계: PDF 파싱 결과
+│   ├─ S01/
+│   │   ├─ S01_fulltext_clean.txt      # 전체 본문(참고문헌 제거, 클리닝)
+│   │   ├─ S01_paragraphs.json         # 문단 단위 텍스트
+│   │   ├─ S01_metadata.json           # PDF 메타데이터(제목, 페이지 수 등)
+│   │   ├─ S01_tables_index.json       # 표 파일 목록
+│   │   └─ tables/                     # 이 논문의 표들
+│   │       ├─ S01_table_01.csv
+│   │       ├─ S01_table_02.csv
+│   │       └─ ...
+│   ├─ S02/
+│   │   └─ ...
+│   └─ ...
+│
+├─ 3_structured_data/              # ★ 2단계: 구조화된 데이터(엑셀/CSV)
+│   ├─ master_study_level.csv      # 연구 단위 기본정보 (1행=1논문)
+│   ├─ effect_size_level.csv       # 효과크기/유병률 단위 (1행=1효과/1유병률)
+│   ├─ coding_book.xlsx            # 변수 정의 코드북
+│   └─ table_diagnostics.csv       # 표 추출 진단 로그(자동)
+│
+├─ 4_analysis/
+│   ├─ python/                     # ★ 분석 / 전처리 코드
+│   │   ├─ 01_cleaning.py              # PDF → 2_clean_text 생성
+│   │   ├─ 02_effect_size_calc.py      # (지금은 보류/튜닝) 표 → ES 자동추출
+│   │   ├─ 03_meta_analysis.py         # meta 분석 코드 (ES 기반)
+│   │   └─ create_master_template.py   # master_study_level 기본 템플릿 생성
+│   ├─ R/
+│   │   └─ meta_analysis.R             # R로 메타분석 할 경우
+│   └─ outputs/                        # 분석 결과물
+│       ├─ forest_plots/
+│       ├─ funnel_plots/
+│       └─ meta_results_tables.xlsx
+│
+└─ 5_reports/                      # ★ 논문/발표 자료
+    ├─ draft_manuscript.docx       # 논문 초고
+    ├─ tables_for_paper.xlsx       # 논문용 표 정리
+    └─ slides_presentation.pptx    # 발표 슬라이드
